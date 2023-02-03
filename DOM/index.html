@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="it">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title></title>
+		<script>
+			//  alert(window);
+			//  var  myWindow ='DOM';
+			//  window.alert(window.myWindow);
+			/* document = other obj similar to window */
+			/* window.onload = function () {
+						let myH1 = document.getElementById('title');
+					myH1.style.color ="red";
+					console.log(myH1)  
+					}
+				window.addEventListener('load', function (evt) {
+					console.log(evt)
+				})
+			*/
+			document.addEventListener("DOMContentLoaded", (evt) => {
+				let myH1 = document.getElementById("title");
+				myH1.onmouseenter = function (params) {
+					myH1.style.border = "2px solid green";
+				};
+				myH1.addEventListener("mouseleave", function (evt) {
+					evt.target.style.border = "1px solid black";
+				});
+				myH1.style.color = "red";
+			});
+		</script>
+	</head>
+	<body>
+		<h1 id="title" onmouseout="this.style.color='red'" onmouseover="this.style.color='blue'">DOMContentLoaded</h1>
+		<img src="https://via.placeholder.com/728x90.png?text=Visit+WhoIsHostingThis.com+Buyers+GuideC/O https://placeholder.com/#How_To_Use_Our_Placeholders" />
+	</body>
+</html>

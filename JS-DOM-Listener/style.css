@@ -1,0 +1,14 @@
+.header1 {
+	color: red;
+	padding: 7px;
+	background-color: white;
+	border: 1px solid red;
+	text-align: center;
+	text-transform: uppercase;
+	border-radius: 5px;
+}
+
+#title,
+p#title {
+	color: rgb(0, 34, 0);
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js exercise</title>
+</head>
+<body>
+	<h1>Javascript ES6-ES9 - ForEach</h1>
+	<!-- <ul id="posts"></ul> -->
+	<div id="city"></div>
+
+	<script src="./foreach.js"></script>
+	<script>
+		const postsUrl = 'https://jsonplaceholder.typicode.com/posts/';
+		let ul = document.getElementById('posts');
+		let listContent = '';
+
+		fetch(postsUrl)
+		.then((response) => response.json())
+		.then(posts => {
+				let postUpperCase = posts.map(el => {
+					if (el.title) {
+						el.title = el.title.toUpperCase()
+						// console.log("TITLE:", el.title)
+						return el                  
+					}
+				})
+				postUpperCase.forEach(i => {
+						// listContent += '<li>' + i.title + '</li>'
+				});
+				// console.log("ul.innerHTML", ul.innerHTML)
+				// ul.innerHTML = listContent;
+		});
+	</script>
+</body>
+</html>
