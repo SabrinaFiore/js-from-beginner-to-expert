@@ -24,9 +24,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	console.log("form", form)
 
+	/*
 	form.onsubmit = function(e) {
-		// alert(e)
-		console.log(e)
-		return false;
+		console.log(e);
+
+		// The preventDefault() method of the Event interface tells the user agent that 
+		// if the event does not get explicitly handled, its default action should not be taken as it normally would be.
+		e.preventDefault();
+
+		let t = e.target;
+		t.style.border = '1px solid blue';
+		alert(e.target.name.value);
 	}
+	*/
+
+	function handleForm(e) {
+		e.preventDefault();
+		t.style.border = '2px solid green';
+		console.log("handleForm event", e)
+	}
+
+	form.addEventListener('submit', handleForm)
+	form.removeEventListener('submit', handleForm)
 })
