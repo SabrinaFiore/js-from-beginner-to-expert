@@ -1,80 +1,94 @@
 html {
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    font-size: 62.5%;
-    height: 100%;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	font-size: 62.5%;
+	height: 100%;
 }
 
 body {
-    box-sizing: border-box;
-    font-family: "Segoe UI", Helvetica, sans;
-    background: linear-gradient(to bottom, deepskyblue, white);
+	box-sizing: border-box;
+	font-family: "Segoe UI", Helvetica, sans;
+	/* background: linear-gradient(to bottom, deepskyblue, white); */
+	background: rgb(227, 227, 227);
 }
 
 h1 {
-    text-transform: uppercase;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 24px;
+	font-weight: 600;
+	padding: 1rem 0;
+	text-transform: uppercase;
 }
 
-input#todo {
-    min-width: 250px;
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px solid #222;
+input {
+	padding: 0.75rem;
+	border: unset;
+	border-radius: 5px;
+	width: 250px;
+	margin: 2rem;
 }
 
 ul#todolist {
-    list-style-type: none;
-    padding: 0;
-    max-width: 400px;
-    margin: auto;
-    margin-bottom: 15px;
+	list-style-type: none;
+	padding: 0;
+	max-width: 400px;
+	margin: auto;
 }
 
 ul#todolist li {
-    text-align: left;
-    border-bottom: 1px solid #dedede;
-    padding: 10px 0px;
-    cursor: pointer;
-    min-width: 250px;
+	text-align: left;
+	border-bottom: 1.5px solid #fbfbfb;
+	padding: 10px 0px;
+	cursor: pointer;
+	min-width: 250px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	font-weight: 200;
+	padding: 2rem 0;
 }
 
 li.completed {
-    text-decoration: line-through;
+	text-decoration: line-through;
 }
 
-ul#todolist li span.completed:after,
-ul#todolist li span.uncomplete:after {
-    content: '\1F5F9';
-    color: green;
-    font-size: 18px;
-    padding: 4px;
+ul#todolist li span.completed:after {
+	content: '\1F5F9';
+	color: green;
+	font-size: 18px;
+	padding: 4px;
+
 }
 
 ul#todolist li span.uncomplete:after {
-    content: '\02610';
+	content: '\025A1';
+	color: green;
+	font-size: 28px;
+	padding: 4px;
 }
 
 ul#todolist li:hover span.cross:after {
-    content: '\02A2F';
-    color: red;
-    font-size: 28px;
-    padding: 4px;
-    float: right;
-    margin-right: 5px;
+	content: '\02A2F';
+	color: red;
+	font-size: 28px;
+	padding: 4px;
+	float: right;
+	margin-right: 5px;
 }
 
 button {
-    color: #fff;
-    background: green;
-    padding: 4px;
-    border-radius: 4px;
-    border: 1px solid #fff;
-    width: 120px;
-    font-size: 75%;
-    cursor: pointer;
+	background-color: fbfbfb;
+    color: black;
+    text-indent: 0px;
+    text-shadow: none;
+    margin: 0em;
+    padding: 1.5rem !important;
+    border-width: unset;
+    border-style: outset;
+    border-color: unset;
+    border-image: initial;
 }
 
 button.active {
-    background: red;
+	background: red;
 }
