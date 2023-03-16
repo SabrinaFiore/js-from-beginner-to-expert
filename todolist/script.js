@@ -2,49 +2,42 @@ function ToDoList() {
 	let ultodo, input, btnAll, btnTodo, btnCompleted;
 	console.log("YOU ARE IN TODOLIST JS")
 
-	const todos = [
-		{
-			id: 0,
-			text: 'Go shopping',
-			completed: false
-		},
-		{
-			id: 1,
-			text: 'Go to work',
-			completed: false
-		},
-		{
-			id: 2,
-			text: 'Do english homework',
-			completed: true
-		},
-	];
+	let todos = [];
+
+	const loadTodosFromLocalStorage = () => {
+		const localTodos = localStorage.getItem('todos');
+
+		if (localTodos) {
+			const todoArr = JSON.parse(localTodos)
+			if(todoArr) {
+				todos = todoArr;
+			}
+		}
+	}
+
+	const saveTodoFromLocalStorage = () => {
+		localStorage.setItem('todos', JSON.stringify(todos))
+	}
 
 	const removeTodo = id => {
-		console.log("removeTodo item id", id);
 		// filter return new array
 		let newTodoList = todos.filter(todo => todo.id !== id);
-		console.log("newTodoList", newTodoList);
+		saveTodoFromLocalStorage();
 		ultodo.removeChild(ultodo.querySelector('#todo-' + id))
  	};
 
 	const toggleTodo = (id, ele) => {
-		console.log("toggleTodo item id", id);
-
 		let newTodoList = todos.map(ele => {
 			if(ele.id === id) {
 				ele.completed = !ele.completed;
 			}
 			return ele;
 		});
-		
+		saveTodoFromLocalStorage();
 		const oldClass = ele.classList.contains('completed') ? 'completed' : 'uncomplete';
         const newClass = oldClass === 'completed' ? 'uncomplete' : 'completed';
-		console.log("oldClass", oldClass, "newClass", newClass)
 		
         ele.classList.replace(oldClass, newClass);
-		console.log("ele.classList", ele.classList)
-
         ele.parentNode.classList.toggle('completed');
  	};
 
@@ -79,8 +72,8 @@ function ToDoList() {
 
 	// destrutturing obj
 	const addNewTodo = (todo) => {
-		// console.log("YOU ARE IN addNewTodo")
-		todos.push(todo)
+		todos.unshift(todo);
+		saveTodoFromLocalStorage();
 		const li = createLi(todo);
 
 		const firstLi = ultodo.firstChild;
@@ -92,7 +85,6 @@ function ToDoList() {
 	}
 
 	const addToDo = (e) => {
-		console.log("addToDo e.target.value", e.target.value)
 		const key = e.keyCode, ele = e.target;
 
 		if(key === 13 && ele.value.trim().length > 2) {
@@ -126,7 +118,7 @@ function ToDoList() {
 		.forEach(li => ultodo.appendChild(li))
 	}
 
-	const toggleBtnClasses = (target, btn = []) => {
+	const toggleBtnClasses = (target, btns = []) => {
 		target.classList.toggle('active');
 		target.setAttribute('disabled', true);
 
@@ -156,8 +148,7 @@ function ToDoList() {
 	}
 
 	const renderTodosList = () => {
-		// console.log("YOU ARE IN RENDERTODOS METHOD")
-
+		loadTodosFromLocalStorage();
 		ultodo = document.querySelector('ul#todolist');
 
 		if(!ultodo) {
@@ -167,7 +158,6 @@ function ToDoList() {
 		}
 
 		renderTodos('all');
-
 		input = document.querySelector('#todo')
 
 		if(!input) {
